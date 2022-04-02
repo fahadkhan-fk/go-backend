@@ -1,7 +1,7 @@
 package crud
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Index returns all records
