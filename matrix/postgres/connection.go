@@ -57,7 +57,7 @@ func getDBConfig() DBConfig {
 	return config
 }
 
-//GetPostgresClient returns a db client
-func GetPostgresClient() (*gorm.DB, error) {
-	return dbClient, dbErr
+//GetDBClient returns a db client
+func GetDBClient() *gorm.DB {
+	return dbClient
 }
