@@ -11,7 +11,7 @@ import (
 
 var (
 	dbClient *gorm.DB
-	dbErr    error
+	err      error
 )
 
 // DBConfig stores database related configurations
@@ -24,16 +24,14 @@ type DBConfig struct {
 	Port     string
 }
 
-func init() {
-	db, err := gorm.Open(postgres.Open(getDSN()), &gorm.Config{})
+func establishDBConnection() {
+	dbClient, err = gorm.Open(postgres.Open(getDSN()), &gorm.Config{})
 	if err != nil {
 		log.Println("Connection Failed to Open due to: ", err)
 	} else {
 		log.Println("Connection Established !!")
 	}
 
-	dbClient = db
-	dbErr = err
 }
 
 func getDSN() string {
@@ -58,6 +56,11 @@ func getDBConfig() DBConfig {
 }
 
 //GetDBClient returns a db client
-func GetDBClient() *gorm.DB {
-	return dbClient
+func GetClient() *gorm.DB {
+	if dbClient == nil {
+		establishDBConnection()
+		return dbClient
+	} else {
+		return dbClient
+	}
 }
