@@ -58,7 +58,7 @@ func getDBConfig() DBConfig {
 //GetDBClient returns a db client
 func GetClient() *gorm.DB {
 	if dbClient == nil {
-		establishDBConnection()
+		EstablishDBConnection()
 		return dbClient
 	} else {
 		return dbClient
