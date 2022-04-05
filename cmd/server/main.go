@@ -4,11 +4,15 @@ import (
 	"fmt"
 
 	"github.com/fahadkhan-fk/go-gin-backend/handler/user"
+	"github.com/fahadkhan-fk/go-gin-backend/pkg/postgres"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	fmt.Println("Hello Fahad !!")
+
+	// Setup Database connection
+	postgres.EstablishDBConnection()
 
 	// Gin framework routes
 	route := gin.Default()

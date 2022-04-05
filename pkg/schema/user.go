@@ -18,24 +18,24 @@ type User struct {
 	DeletedAt *time.Time `json:"deleted_at"`
 }
 
-func AddNewUser(client *gorm.DB, user *User) (*User, *gorm.DB) {
-	if err := client.Create(&user); err.Error != nil {
+func AddNewUser(client *gorm.DB, user *User) (*User, error) {
+	if err := client.Create(&user).Error; err != nil {
 		return nil, err
 	} else {
 		return user, nil
 	}
 }
 
-func FetchAllUsers(client *gorm.DB, users *[]User) (*[]User, *gorm.DB) {
-	if err := client.Find(&users); err.Error != nil {
+func FetchAllUsers(client *gorm.DB, users *[]User) (*[]User, error) {
+	if err := client.Find(&users).Error; err != nil {
 		return nil, err
 	} else {
 		return users, nil
 	}
 }
 
-func GetUserByID(client *gorm.DB, user *User, userID string) (*User, *gorm.DB) {
-	if err := client.Where("id = ?", userID).First(&user); err.Error != nil {
+func GetUserByID(client *gorm.DB, user *User, userID string) (*User, error) {
+	if err := client.Where("id = ?", userID).First(&user).Error; err != nil {
 		return nil, err
 	} else {
 		return user, nil
