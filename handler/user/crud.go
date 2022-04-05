@@ -1,6 +1,8 @@
 package user
 
 import (
+	"fmt"
+
 	"github.com/fahadkhan-fk/go-gin-backend/pkg/postgres"
 	"github.com/fahadkhan-fk/go-gin-backend/pkg/schema"
 	"github.com/gin-gonic/gin"
@@ -17,7 +19,7 @@ func Create(c *gin.Context) {
 
 	user, err = schema.AddNewUser(client, user)
 	if err != nil {
-		c.JSON(400, err)
+		c.JSON(400, err.Error())
 	} else {
 		c.JSON(200, user)
 	}
@@ -28,7 +30,7 @@ func GetAll(c *gin.Context) {
 	client := postgres.GetClient()
 	users, err := schema.FetchAllUsers(client, &[]schema.User{})
 	if err != nil {
-		c.AbortWithStatus(404)
+		c.JSON(404, err.Error())
 	} else {
 		c.JSON(200, users)
 	}
@@ -40,7 +42,7 @@ func GetByID(c *gin.Context) {
 	userID := c.Params.ByName("id")
 	user, err := schema.GetUserByID(client, &schema.User{}, userID)
 	if err != nil {
-		c.AbortWithStatus(404)
+		c.JSON(404, err.Error())
 	} else {
 		c.JSON(200, user)
 	}
@@ -52,14 +54,13 @@ func Update(c *gin.Context) {
 	userID := c.Params.ByName("id")
 	user, err := schema.GetUserByID(client, &schema.User{}, userID)
 	if err != nil {
-		c.AbortWithStatus(404)
+		c.JSON(404, err.Error())
 		return
 	}
 
 	//binding the data in JSON and saving in DB.
 	c.BindJSON(&user)
 	schema.UpdateUser(client, user)
-
 	c.JSON(200, user)
 }
 
@@ -74,5 +75,5 @@ func Delete(c *gin.Context) {
 	}
 
 	schema.DeleteUser(client, user)
-	c.JSON(200, "User is deleted")
+	c.JSON(200, fmt.Sprintf("User %s is deleted", userID))
 }
