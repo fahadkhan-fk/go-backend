@@ -24,7 +24,7 @@ type DBConfig struct {
 	Port     string
 }
 
-func establishDBConnection() {
+func EstablishDBConnection() {
 	dbClient, err = gorm.Open(postgres.Open(getDSN()), &gorm.Config{})
 	if err != nil {
 		log.Println("Connection Failed to Open due to: ", err)
