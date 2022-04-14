@@ -11,7 +11,7 @@ const (
 	PORT        = "5432"
 	DB_USER     = "postgres"
 	DB_PASSWORD = "postgres"
-	DB_NAME     = "quickbite"
+	DB_NAME     = "go-backend"
 	SSLMODE     = "disable"
 	DATABASE    = "postgres"
 )
