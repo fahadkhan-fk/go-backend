@@ -1,4 +1,4 @@
-module github.com/fahadkhan-fk/go-gin-backend
+module github.com/fahadkhan-fk/go-backend
 
 go 1.15
 

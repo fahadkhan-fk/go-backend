@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/fahadkhan-fk/go-gin-backend/handler/user"
-	"github.com/fahadkhan-fk/go-gin-backend/pkg/postgres"
+	"github.com/fahadkhan-fk/go-backend/handler/user"
+	"github.com/fahadkhan-fk/go-backend/pkg/postgres"
 	"github.com/gin-gonic/gin"
 )
 

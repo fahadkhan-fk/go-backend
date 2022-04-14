@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/fahadkhan-fk/go-gin-backend/pkg/env"
+	"github.com/fahadkhan-fk/go-backend/pkg/env"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

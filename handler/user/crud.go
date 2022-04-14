@@ -3,8 +3,8 @@ package user
 import (
 	"fmt"
 
-	"github.com/fahadkhan-fk/go-gin-backend/pkg/postgres"
-	"github.com/fahadkhan-fk/go-gin-backend/pkg/schema"
+	"github.com/fahadkhan-fk/go-backend/pkg/postgres"
+	"github.com/fahadkhan-fk/go-backend/pkg/schema"
 	"github.com/gin-gonic/gin"
 )
 
